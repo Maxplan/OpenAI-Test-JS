@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import readline from "readline";
 
-const key = "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"
+const key = "YOUR_API_KEY" //Generate your own api key from openai and paste it here. GPT-4 is only available if you are a plus member when generating you key
 const openai = new OpenAI({apiKey: key});
 
 
