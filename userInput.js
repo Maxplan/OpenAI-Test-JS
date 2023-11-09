@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import readline from "readline";
 
-const key = "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"
+const key = "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"
 const openai = new OpenAI({apiKey: key});
 
 
@@ -19,7 +19,6 @@ async function getMessage(query){
     return message;
 }
 
-
 let conversationHistory = [];
 
 async function main()
@@ -34,14 +33,15 @@ async function main()
 
         const completion = await openai.chat.completions.create({
             messages: conversationHistory,
-            model: "gpt-3.5-turbo"
+            model: "gpt-4-1106-preview", // Change this to the model you want to use e.g "gpt-3.5-turbo" for gpt 3.5 and "gpt-4-1106-preview" for gpt 4
+            temperature: 0.9 // Change temerature depending on what kind of answers you want. Lower temperature means more conservative answers and higher temperature means more creative answers
         });
 
         var response = completion.choices[0].message.content;
 
         console.log("AI: " + response)
 
-        conversationHistory.push({ role: "assistant", content: response });
+        conversationHistory.push({ role: "assistant", content: response});
         
     }
 }
